@@ -1,6 +1,7 @@
 import { createElement } from "../../utils/createElements";
+import { ImageCard } from "../../utils/api";
 
-export function createCard({ image, name, color, type, text }) {
+export function createCard({ card: { image, name, type, text } }: ImageCard) {
   return createElement("div", {
     className: "card",
     childs: [
@@ -8,9 +9,9 @@ export function createCard({ image, name, color, type, text }) {
         className: "card__name",
         innerText: name,
       }),
-      createElement("h4", {
-        innerText: color,
-      }),
+      //   createElement("h4", {
+      //     innerText: color,
+      //   }),
       createElement("p", {
         className: "card__type",
         innerText: type,
