@@ -3,15 +3,11 @@
 export type Card = {
   card: {
     name: string;
-    colors: string[];
+    colors: "White" | "Blue" | "Green" | "Red" | "Black";
     type: string;
     multiverseid: number;
     text: string;
     imageUrl: string;
-    // foreignNames: {
-    //   name: string;
-    //   language: string;
-    // };
   };
 };
 //what I need from API
@@ -21,30 +17,26 @@ export type ImageCard = {
     text: string;
     type: string;
     name: string;
-    // color: string[];
+    color: "White" | "Blue" | "Green" | "Red" | "Black";
     mid: number;
-    // foreignNames: {
-    //   language: string;
-    // };
   };
 };
-
+//convert to my special names
 function convertToImage(imageCard: Card): ImageCard {
   return {
     card: {
       image: imageCard.card.imageUrl,
       name: imageCard.card.name,
-      // color: imageCard.colors,
+      color: imageCard.card.colors,
       mid: imageCard.card.multiverseid,
       text: imageCard.card.text,
       type: imageCard.card.type,
-      // foreignNames: { language: imageCard.foreignNames.language },
     },
   };
 }
 
 export async function getCard() {
-  const response = await fetch(`https://api.magicthegathering.io/v1/cards/600`);
+  const response = await fetch(`https://api.magicthegathering.io/v1/cards/60`);
   const result = (await response.json()) as Card;
   console.log(result);
   const card = convertToImage(result);
@@ -53,8 +45,11 @@ export async function getCard() {
 
 // export async function getCharacters() {
 //   const response = await fetch(`https://api.magicthegathering.io/v1/cards`);
+//   if (!response.ok) {
+//     return [];
+//   }
 //   const result = (await response.json()) as ImageCard;
-//   const characters = result.results.map((apiCharacter) =>
+//   const characters = result.card.map((apiCharacter) =>
 //     convertToImage(apiCharacter)
 //   );
 //   return characters;
