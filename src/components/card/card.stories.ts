@@ -74,30 +74,3 @@ export const staticMagic = () =>
       mid: 130483,
     },
   });
-
-// export const randomPokemon = () => {
-//   const randomButton = createElement("button", {
-//     innerText: "Load random base set pokemon",
-//     onclick: async () => {
-//       const rdmNr = getRandom(0, 70);
-//       const pkm = await getRdmBase(rdmNr);
-//       console.log(pkm);
-//       const rdmCard = createCard(pkm);
-
-//       if (container.childNodes.length > 1) {
-//         container.removeChild(container.lastChild);
-//       }
-//       container.append(rdmCard);
-//     },
-//   });
-
-//   const container = createElement("div", {
-//     className: "container",
-//     childs: [randomButton],
-//   });
-//   return container;
-// };
-
-// function getRandom(min, max) {
-//   return Math.floor(Math.random() * (max - min)) + min;
-// }

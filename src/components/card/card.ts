@@ -6,7 +6,7 @@ function colorToEmoji(color) {
   let colorreturn = "";
   switch (color) {
     case "White":
-      colorreturn = "☀";
+      colorreturn = "🌞";
       break;
     case "Red":
       colorreturn = "🔥";
@@ -49,6 +49,7 @@ export function createCard({
         alt: "",
       }),
       createElement("article", {
+        className: "card__text",
         innerText: text,
       }),
       //   createElement("section", {

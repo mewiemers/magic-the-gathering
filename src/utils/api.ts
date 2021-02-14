@@ -41,7 +41,7 @@ function convertToImage(imageCard: Card): ImageCard {
 }
 
 export async function getCard() {
-  const response = await fetch(`https://api.magicthegathering.io/v1/cards/60`);
+  const response = await fetch(`https://api.magicthegathering.io/v1/cards/600`);
   const result = (await response.json()) as Card;
   console.log(result);
   const card = convertToImage(result.card);
