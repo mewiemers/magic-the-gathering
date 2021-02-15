@@ -1,52 +1,42 @@
 //Scheme from Magic-the-gathering
 
 export type Card = {
-  card: {
-    name: string;
-    colors: "White" | "Blue" | "Green" | "Red" | "Black";
-    type: string;
-    multiverseid: number;
-    text: string;
-    imageUrl: string;
-  };
+  name: string;
+  colors: "White" | "Blue" | "Green" | "Red" | "Black";
+  type: string;
+  multiverseid: number;
+  text: string;
+  imageUrl: string;
 };
+
 //what I need from API
 export type ImageCard = {
-  card: {
-    name: string;
-    image: string;
-    text: string;
-    type: string;
-    color: "White" | "Blue" | "Green" | "Red" | "Black";
-    mid: number;
-  };
+  card: Card[];
 };
 
 export type ImageCards = {
   cards: Card[];
 };
 
-//convert to my special names
+// convert to my special names
 function convertToImage(imageCard: Card): ImageCard {
   return {
-    card: {
-      image: imageCard.imageUrl,
-      name: imageCard.name,
-      color: imageCard.colors,
-      mid: imageCard.multiverseid,
-      text: imageCard.text,
-      type: imageCard.type,
-    },
+    image: imageCard.imageUrl,
+    name: imageCard.name,
+    color: imageCard.colors[0],
+    mid: imageCard.multiverseid,
+    text: imageCard.text,
+    type: imageCard.type,
   };
 }
 
 export async function getCard() {
   const response = await fetch(`https://api.magicthegathering.io/v1/cards/600`);
-  const result = (await response.json()) as Card;
+  const result = (await response.json()) as ImageCard;
   console.log(result);
-  const card = convertToImage(result.card);
+  const cardblacklotus = convertToImage(result.card);
 
-  return card;
+  return cardblacklotus;
 }
 
 export async function getCards(name: string) {
@@ -57,8 +47,7 @@ export async function getCards(name: string) {
     return [];
   }
   const result = (await response.json()) as ImageCards;
-  const characters = result.cards.map((imageCard) => {
-    return convertToImage(imageCard);
-  });
+  const characters = result.cards.map((card) => convertToImage(card));
+
   return characters;
 }

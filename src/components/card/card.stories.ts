@@ -46,7 +46,7 @@ export const CardsFromAPI = (
 
   const mgcContainer = createElement("div", {
     className: "container",
-    childs: cards.map((magicTG) => createCard(magicTG)),
+    childs: [],
   });
   const container = createElement("div", {
     className: "",
@@ -63,14 +63,12 @@ CardsFromAPI.loaders = [
 
 export const staticMagic = () =>
   createCard({
-    card: {
-      image:
-        "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=130483&type=card",
-      name: "Abundance",
-      type: "Enchantment",
-      text:
-        "If you would draw a card, you may instead choose land or nonland and reveal cards from the top of your library until you reveal a card of the chosen kind. Put that card into your hand and put all other cards revealed this way on the bottom of your library in any order.",
-      color: "Green",
-      mid: 130483,
-    },
+    image:
+      "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=130483&type=card",
+    name: "Abundance",
+    type: "Enchantment",
+    text:
+      "If you would draw a card, you may instead choose land or nonland and reveal cards from the top of your library until you reveal a card of the chosen kind. Put that card into your hand and put all other cards revealed this way on the bottom of your library in any order.",
+    color: "Green",
+    mid: 130483,
   });

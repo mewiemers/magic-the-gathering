@@ -26,9 +26,7 @@ function colorToEmoji(color) {
   return colorreturn;
 }
 
-export function createCard({
-  card: { image, name, type, text, color },
-}: ImageCard) {
+export function createCard({ image, name, type, text, color }) {
   return createElement("div", {
     className: "card",
     childs: [
@@ -37,7 +35,7 @@ export function createCard({
         innerText: name,
       }),
       createElement("h4", {
-        innerText: colorToEmoji(color[0]),
+        innerText: colorToEmoji(color),
       }),
       createElement("p", {
         className: "card__type",
