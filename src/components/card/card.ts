@@ -46,10 +46,16 @@ export function createCard({ image, name, type, text, color }) {
         src: image,
         alt: "",
       }),
-      createElement("article", {
-        className: "card__text",
-        innerText: text,
+      createElement("div", {
+        className: "card__con",
+        childs: [
+          createElement("article", {
+            className: "card__text",
+            innerText: text,
+          }),
+        ],
       }),
+
       //   createElement("section", {
       //     className: "card__language",
       //     innerText: foreignNames.language,
